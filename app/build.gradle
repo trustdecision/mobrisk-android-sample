@@ -27,9 +27,9 @@ dependencies {
     implementation fileTree(include: ['*.jar','*.aar'], dir: 'libs')
     // fingerprint
     implementation('com.trustdecision.android:mobrisk:4.2.4.2'){
-        // 移除后sdk不获取安装包列表
+        // after removal, sdk does not get the list of installation packages
         //exclude group: 'com.trustdecision.android', module: 'packagelist'
-        // 移除后sdk不会收集READ_PHONE_STATE相关信息
+        // after removal, sdk will not collect READ_PHONE_STATE related information
         //exclude group: 'com.trustdecision.android', module: 'readphone'
     }
     // captcha

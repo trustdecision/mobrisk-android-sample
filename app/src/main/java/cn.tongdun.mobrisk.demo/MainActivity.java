@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
                 HandlerUtils.runOnWorkingThread(new Runnable() {
                     @Override
                     public void run() {
-                        // TDRisk.getBlackBox() 是同步获取blackbox，如果在主线程调⽤，需要注意耗时问题。
+                        // TDRisk.getBlackBox() obtains the blackbox synchronously. If it is called in the main thread, you need to pay attention to the time-consuming problem.
                         final String blackBox = TDRisk.getBlackBox();
-                        // 主线程 更新ui
+                        // main thread update ui
                         HandlerUtils.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {

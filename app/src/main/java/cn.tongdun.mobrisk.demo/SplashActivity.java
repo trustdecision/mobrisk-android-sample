@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 public class SplashActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mButton;
-    private EditText mEditText;
     private WebView mWebView;
 
     @Override
@@ -26,12 +25,12 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
         mButton.setOnClickListener(this);
 
         WebSettings webSettings = mWebView.getSettings();
-        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);//设置js可以直接打开窗口，如window.open()，默认为false
-        webSettings.setJavaScriptEnabled(true);//是否允许执行js，默认为false。设置true时，会提醒可能造成XSS漏洞
-        webSettings.setSupportZoom(true);//是否可以缩放，默认true
-        webSettings.setBuiltInZoomControls(true);//是否显示缩放按钮，默认false
-        webSettings.setUseWideViewPort(true);//设置此属性，可任意比例缩放。大视图模式
-        webSettings.setLoadWithOverviewMode(true);//和setUseWideViewPort(true)一起解决网页自适应问题
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);//Setting js can directly open the window, such as window.open(), the default is false
+        webSettings.setJavaScriptEnabled(true);//Whether to allow js execution, the default is false. When set to true, it will remind you that it may cause XSS vulnerabilities
+        webSettings.setSupportZoom(true);//Whether it can be zoomed, the default is true
+        webSettings.setBuiltInZoomControls(true);//Whether to display the zoom button, the default is false
+        webSettings.setUseWideViewPort(true);//Set this property to scale at any scale. big view mode
+        webSettings.setLoadWithOverviewMode(true);//Solve the web page adaptation problem together with setUseWideViewPort(true)
         webSettings.setDomStorageEnabled(true);//DOM Storage
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
@@ -46,7 +45,7 @@ public class SplashActivity extends AppCompatActivity implements View.OnClickLis
                 Toast.makeText(SplashActivity.this, "error!!!", Toast.LENGTH_SHORT).show();
             }
         });
-        mWebView.loadUrl("https://www.tongdun.cn/other/privacy/id=1?r=pp");
+        mWebView.loadUrl("https://www.trustdecision.com/legal/privacy-policy");
     }
 
     @Override

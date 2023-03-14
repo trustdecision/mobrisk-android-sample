@@ -1,6 +1,7 @@
 package cn.tongdun.mobrisk.demo;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
@@ -10,48 +11,45 @@ import cn.tongdun.mobrisk.TDRiskCallback;
 
 
 /**
- * 在Application中初始化
+ * Initialize in Application
  */
 
 public class App extends Application {
-    public static Application sContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        if (sContext == null) {
-            sContext = this;
-        }
 
         TDRisk.Builder builder = new TDRisk.Builder()
-                /*************************** ↓必传↓ ***************************/
-                .partnerCode("TrustDecision")   // 同盾的合作⽅编码，如demo，请填写⾃身的合作⽅编码
-                .appName("TrustDecision")       // 同盾平台注册的应⽤名称，请联系同盾运营获取
-                .appKey("appKey")               // 配置AppKey，请联系同盾运营获取
-                .country(TDRisk.COUNTRY_CN)     // 国家地区参数，如cn、sg、us、fra
-                /*************************** ↑必传↑ ***************************/
+                /*************************** ↓ must ↓ ***************************/
+                .partnerCode("TrustDecision")   // Partner code,such as demo,please fill in your partner, get from trustDecision
+                .appName("TrustDecision")       // app Name,such as appName,please fill in your app Name
+                .appKey("appKey")               // configure AppKey, please contact TrustDecision Operations to obtain it
+                .country(TDRisk.COUNTRY_CN)     // Country parameter，E.g: cn、sg、us、fra
+                /*************************** ↑ must ↑ ***************************/
 
-                /********************** ↓设备指纹-可配置参数↓ **********************/
-//                .disableGPS()                 // 默认采集GPS信息, 可以调用此方法进行关闭
-//                .disableSensor()              // 默认采集传感器信息, 可以调用此方法进行关闭
-//                .disableReadPhone()           // 默认采集需要READ_PHONE_STATE权限的信息, 可以调用此方法进行关闭
-//                .disableRunningTasks()        // 默认采集运行任务, 可以调用此方法进行关闭
-//                .disableInstallPackageList()  // 默认采集安装包列表, 可以调用此方法进行关闭
-                /********************** ↑设备指纹-可配置参数↑ **********************/
+                /********************** ↓ fingerprint- configurable parameters ↓ ********************/
+//                .disableGPS()                 // Collect GPS information by default, you can call this method to close
+//                .disableSensor()              // Collect sensor information by default, you can call this method to close
+//                .disableReadPhone()           // By default, information that requires READ_PHONE_STATE permission is collected, and this method can be called to close it
+//                .disableRunningTasks()        // The default collection running task, you can call this method to close
+//                .disableInstallPackageList()  // By default, the list of installation packages is collected, and this method can be called to close
+                /********************** ↑ fingerprint- configurable parameters ↑ ********************/
 
-                /********************** ↓验证码-可配置参数↓ ***********************/
-//                .language(3)                  // 默认:1, 1-简体中文、2-繁体中文、3-英文、4-日文、5-韩文、6-⻢来语、7-泰语、8-印尼语、9-俄语
-//                .tapToClose(true)             // 默认:false, 开启后，点击界面空白处，会关闭验证码弹窗，关闭弹窗更加便捷
-//                .hideLoadHud(true)            // 默认:false, 开启后，弹出验证码弹窗时不会再显示loading加载动画，缩短验证时间
-//                .hideWebCloseButton(true)     // 默认:false, 适合 需要强制完成验证码验证的场景
-                /********************** ↑验证码-可配置参数↑ ***********************/
+                /********************** ↓ captcha- configurable parameters ↓ ***********************/
+//                .language(3)                  // default:1, 1-Simplified Chinese, 2-Traditional Chinese, 3-English, 4-Japanese, 5-Korean, 6-Malay, 7-Thai, 8-Indonesian, 9-Russian
+//                .tapToClose(true)             // default:false, After opening, click on the blank area of the interface to close the verification code pop-up window, which is more convenient to close the pop-up window
+//                .hideLoadHud(true)            // default:false, When enabled, the loading animation will not be displayed when the Captcha window pops up, shortening the verification time
+//                .hideWebCloseButton(true)     // default:false, Scenarios that need to be forced to complete the Captcha
+                /********************** ↑ captcha- configurable parameters ↑ ***********************/
                 .callback(new TDRiskCallback() {
                     @Override
                     public void onEvent(String blackbox) {
                         Log.i("RiskDemo", "callback blackbox " + blackbox);
                     }
                 });
-        // 建议⽤户同意隐私协议后初始化
-        TDRisk.initWithOptions(sContext, builder);
+//        if (It is recommended that users agree to the privacy agreement to initialize){
+            TDRisk.initWithOptions(getApplicationContext(), builder);
+//        }
     }
 }

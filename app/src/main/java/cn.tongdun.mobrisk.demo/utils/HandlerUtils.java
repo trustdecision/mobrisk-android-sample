@@ -6,7 +6,7 @@ import android.os.HandlerThread;
 import android.os.Looper;
 
 /**
- * Handler工具类
+ * Handler utils
  */
 public class HandlerUtils {
 
