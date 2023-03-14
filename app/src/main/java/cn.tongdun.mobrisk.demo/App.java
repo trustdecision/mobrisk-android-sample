@@ -31,12 +31,20 @@ public class App extends Application {
                 .country(TDRisk.COUNTRY_CN)     // 国家地区参数，如cn、sg、us、fra
                 /*************************** ↑必传↑ ***************************/
 
-                /*************************** ↓可配置参数↓ ***************************/
-//                .disableGPS()                   // 默认采集GPS信息, 可以调用此方法进行关闭
-//                .disableSensor()                // 默认采集传感器信息, 可以调用此方法进行关闭
-//                .disableReadPhone()             // 默认采集需要READ_PHONE_STATE权限的信息, 可以调用此方法进行关闭
-//                .disableRunningTasks()          // 默认采集运行任务, 可以调用此方法进行关闭
-//                .disableInstallPackageList()    // 默认采集安装包列表, 可以调用此方法进行关闭
+                /********************** ↓设备指纹-可配置参数↓ **********************/
+//                .disableGPS()                 // 默认采集GPS信息, 可以调用此方法进行关闭
+//                .disableSensor()              // 默认采集传感器信息, 可以调用此方法进行关闭
+//                .disableReadPhone()           // 默认采集需要READ_PHONE_STATE权限的信息, 可以调用此方法进行关闭
+//                .disableRunningTasks()        // 默认采集运行任务, 可以调用此方法进行关闭
+//                .disableInstallPackageList()  // 默认采集安装包列表, 可以调用此方法进行关闭
+                /********************** ↑设备指纹-可配置参数↑ **********************/
+
+                /********************** ↓验证码-可配置参数↓ ***********************/
+//                .language(3)                  // 默认:1, 1-简体中文、2-繁体中文、3-英文、4-日文、5-韩文、6-⻢来语、7-泰语、8-印尼语、9-俄语
+//                .tapToClose(true)             // 默认:false, 开启后，点击界面空白处，会关闭验证码弹窗，关闭弹窗更加便捷
+//                .hideLoadHud(true)            // 默认:false, 开启后，弹出验证码弹窗时不会再显示loading加载动画，缩短验证时间
+//                .hideWebCloseButton(true)     // 默认:false, 适合 需要强制完成验证码验证的场景
+                /********************** ↑验证码-可配置参数↑ ***********************/
                 .callback(new TDRiskCallback() {
                     @Override
                     public void onEvent(String blackbox) {

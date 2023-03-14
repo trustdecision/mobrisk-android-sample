@@ -25,7 +25,15 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar','*.aar'], dir: 'libs')
-    implementation 'com.trustdecision.android:mobrisk:4.2.4.2'
+    // fingerprint
+    implementation('com.trustdecision.android:mobrisk:4.2.4.2'){
+        // 移除后sdk不获取安装包列表
+        //exclude group: 'com.trustdecision.android', module: 'packagelist'
+        // 移除后sdk不会收集READ_PHONE_STATE相关信息
+        //exclude group: 'com.trustdecision.android', module: 'readphone'
+    }
+    // captcha
+    implementation 'com.trustdecision.android:captcha:2.2.0'
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'

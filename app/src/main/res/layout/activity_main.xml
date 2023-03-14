@@ -28,6 +28,12 @@
             android:layout_height="wrap_content"
             android:text="get version" />
 
+        <Button
+            android:id="@+id/bt_show_captcha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="show captcha" />
+
         <TextView
             android:id="@+id/tv_content"
             android:layout_width="match_parent"
