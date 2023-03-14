@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //以下权限不是必须申请. 可根据业务情况选择性权限申请
+        //The following permissions are not required to apply. You can apply for selective permissions according to business conditions
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{
                     Manifest.permission.ACCESS_FINE_LOCATION,
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             }, 100);
         }
         tvContent = (TextView) findViewById(R.id.tv_content);
-
+        // TDRisk.getBlackBox
         findViewById(R.id.bt_get_blackbox).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,14 +50,14 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-
+        // TDRisk.getSDKVersion
         findViewById(R.id.bt_get_version).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 tvContent.setText(TDRisk.getSDKVersion());
             }
         });
-
+        // TDRisk.showCaptcha
         findViewById(R.id.bt_show_captcha).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
