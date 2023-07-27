@@ -14,6 +14,7 @@ BIPHi1690440707BatijlFjtbf
 ## ❌ Wrong BlackBox Sample
 
 **Feature:** 
+
 The length of the blackbox obtained for the first time is very long as expected, and the network permission may not be obtained yet.
 However, it is a problem if it is too long several times in a row. Please check whether the initialization parameters are filled incorrectly.
 
