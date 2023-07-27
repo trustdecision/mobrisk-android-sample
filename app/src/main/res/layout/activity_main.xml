@@ -23,6 +23,12 @@
             android:text="get blackbox" />
 
         <Button
+            android:id="@+id/bt_get_blackbox_async"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="get blackbox async" />
+
+        <Button
             android:id="@+id/bt_get_version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -25,7 +25,7 @@ public class App extends Application {
                 .partnerCode("TrustDecision")   // Partner code,such as demo,please fill in your partner, get from trustDecision
                 .appName("TrustDecision")       // app Name,such as appName,please fill in your app Name
                 .appKey("appKey")               // configure AppKey, please contact TrustDecision Operations to obtain it
-                .country(TDRisk.COUNTRY_CN)     // Country parameter，E.g: cn、sg、us、fra
+                .country(TDRisk.COUNTRY_CN);     // Country parameter，E.g: cn、sg、us、fra
                 /*************************** ↑ must ↑ ***************************/
 
                 /********************** ↓ fingerprint- configurable parameters ↓ ********************/
@@ -42,12 +42,7 @@ public class App extends Application {
 //                .hideLoadHud(true)            // default:false, When enabled, the loading animation will not be displayed when the Captcha window pops up, shortening the verification time
 //                .hideWebCloseButton(true)     // default:false, Scenarios that need to be forced to complete the Captcha
                 /********************** ↑ captcha- configurable parameters ↑ ***********************/
-                .callback(new TDRiskCallback() {
-                    @Override
-                    public void onEvent(String blackbox) {
-                        Log.i("RiskDemo", "callback blackbox " + blackbox);
-                    }
-                });
+
 //        if (It is recommended that users agree to the privacy agreement to initialize){
             TDRisk.initWithOptions(getApplicationContext(), builder);
 //        }

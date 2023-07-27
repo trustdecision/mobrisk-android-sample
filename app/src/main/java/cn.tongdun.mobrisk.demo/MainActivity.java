@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import cn.tongdun.mobrisk.TDRisk;
+import cn.tongdun.mobrisk.TDRiskCallback;
 import cn.tongdun.mobrisk.TDRiskCaptchaCallback;
 import cn.tongdun.mobrisk.demo.utils.HandlerUtils;
 
@@ -50,6 +51,31 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+        findViewById(R.id.bt_get_blackbox_async).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HandlerUtils.runOnWorkingThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // TDRisk.getBlackBox() obtains the blackbox synchronously. If it is called in the main thread, you need to pay attention to the time-consuming problem.
+                        TDRisk.getBlackBox(new TDRiskCallback() {
+                            @Override
+                            public void onEvent(final String blackBox) {
+                                // main thread update ui
+                                HandlerUtils.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        tvContent.setText(blackBox);
+                                    }
+                                });
+                            }
+                        });
+
+                    }
+                });
+            }
+        });
+
         // TDRisk.getSDKVersion
         findViewById(R.id.bt_get_version).setOnClickListener(new View.OnClickListener() {
             @Override
