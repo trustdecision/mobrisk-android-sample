@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         //The following permissions are not required to apply. You can apply for selective permissions according to business conditions
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{
-                    Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION,
                     Manifest.permission.READ_PHONE_STATE
             }, 100);
